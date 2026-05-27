@@ -274,8 +274,8 @@ Resultados completos disponíveis na pasta `dados/`. Resumo das médias:
 | R-UDP | C (20%/100ms) |  2,28 |  0,16 |
 
 Análise completa com gráficos disponível no Google Colab:
-> 🔗 **[Link do Colab]** — substituir pelo link real após publicar
-
+> 🔗 Colab do projeto: 
+> https://colab.research.google.com/drive/13RM0N0FQlWNp6mXwAaG_hHIcoa33Ovpz?usp=sharing
 ---
 
 *Projeto de Redes de Computadores — PPGCC/UFPI 2026-1*
