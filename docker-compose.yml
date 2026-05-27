@@ -1,0 +1,39 @@
+# docker-compose.yml — Ambiente de testes com dois containers
+
+
+services:
+  servidor:
+    build: .
+    container_name: servidor_redes
+    # Mantem o terminal interativo para executar os servidores manualmente.
+    stdin_open: true
+    tty: true
+    volumes:
+      # Compartilha a pasta do projeto com o container.
+      - .:/app
+    cap_add:
+      - NET_ADMIN      # necessário para tc qdisc
+      - NET_RAW        # necessário para tcpdump
+    networks:
+      - rede_projeto
+
+  cliente:
+    build: .
+    container_name: cliente_redes
+    # Mantem o terminal interativo para executar os clientes manualmente.
+    stdin_open: true
+    tty: true
+    volumes:
+      # Usa os mesmos arquivos do projeto, incluindo arquivo_teste.bin.
+      - .:/app
+    cap_add:
+      - NET_ADMIN      # necessário para tc qdisc
+      - NET_RAW        # necessário para tcpdump
+    depends_on:
+      - servidor
+    networks:
+      - rede_projeto
+
+networks:
+  rede_projeto:
+    driver: bridge
